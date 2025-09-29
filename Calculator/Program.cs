@@ -1,17 +1,56 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿CalculatorApp();
 
-// Integer stores first number
-// Ask user to input first number
-Console.WriteLine("Type in the first number followed by the Enter key");
-int firstNumber = Convert.ToInt32(Console.ReadLine());
+void CalculatorApp()
+{
+    try
+    {
+        // Prompt the user to enter the first number
+        Console.Write("Enter the first number: ");
+        int firstNumber = Convert.ToInt32(Console.ReadLine());
 
-// Integer stores second number
-// Ask user to input second number
-Console.WriteLine("Type in the second number followed by the Enter key");
-int secondNumber = Convert.ToInt32(Console.ReadLine());
+        // Prompt the user to enter the second number
+        Console.Write("Enter the second number: ");
+        int secondNumber = Convert.ToInt32(Console.ReadLine());
 
-// Perform Calculation
-int result = firstNumber + secondNumber;
+        // Prompt the user to enter the operation
+        Console.Write("Enter the operation (+, -, *, /): ");
 
-// Output to screen
-Console.WriteLine("Adding {0} and {1} give the answer {2}" , firstNumber, secondNumber, result);
+        // Keyboard input is by default of type 'string'
+        // and requires conversion to 'char' to work
+        // with the switch statement
+        char operation = Convert.ToChar(Console.ReadLine());
+        int result = 0;
+
+        // Perform the operation
+        switch (operation)
+        {
+            case '+':
+                result = firstNumber + secondNumber;
+                break;
+            case '-':
+                result = firstNumber - secondNumber;
+                break;
+            case '*':
+                result = firstNumber * secondNumber;
+                break;
+            case '/':
+                result = firstNumber / secondNumber;
+                break;
+            default:
+                Console.WriteLine("Invalid operation.");
+                return;
+        }
+        // Output the result to the user
+        Console.WriteLine($"Result: {result}");
+    }
+    catch (Exception ex)
+    {
+        // Handle the case where the input is not valid
+        // and show the user the error message content.
+        Console.WriteLine($"Error:{ex.Message}. Please enter a valid operation.");
+    }
+    finally
+    {
+
+    }
+}
